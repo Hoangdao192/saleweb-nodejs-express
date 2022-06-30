@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a914f93d25.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    {{!-- <link rel="shortcut icon" href="<?php echo HTML::image("favicon.png")?>" type="images/x-icon"> --}}
+    <title>B.C.D</title>
+    <script>
+        console.log(document.location.pathname);
+    </script>
+</head>
+<script>
+    function getDomainUrl() {
+        return document.getElementById("domain-url").value;
+    }
+    function openPostRequest(url, data) {
+        var form = document.createElement('form');
+        form.action = url;
+        form.method = "POST";
+        form.style.display = "none";
+        Object.entries(data).forEach(entry => {
+            const [key, value] = entry;
+            var input = document.createElement('input');
+            input.type = "hidden";
+            input.name = key;
+            input.value = value;
+            form.appendChild(input);
+        });
+        document.body.appendChild(form);
+        form.submit();
+    }
+    function logOut() {
+        var request = new XMLHttpRequest();
+        request.open('POST', `${getDomainUrl()}/ajax/logout`, true);
+        request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+        request.onload = function() {
+            if (this.status >= 200 && this.status < 400) {
+                // Success!
+                location.reload();
+            }
+        };
+        request.send();
+    }
+</script>
+{{!-- <script src="<?php echo HTML::script("header.js")?>"></script> --}}
+
+<body>
+    <!--Header start-->
+    {{>header}}
+    <!--Header end-->
+
+    <!--Content start-->
+    {{{body}}}
+    <!--Content end-->
+
+    <!--Footer start-->
+    {{>footer}}
+    <!--Footer end-->
+</body>
+</html>
