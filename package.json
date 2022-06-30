@@ -1,0 +1,29 @@
+{
+  "name": "saleweb",
+  "version": "1.0.0",
+  "description": "A simple MVC Project about sales clothes on web. Use NodeJS, Express, MySQL",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "nodemon --inspect src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hoangdao192/saleweb-nodejs-express.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hoangdao192/saleweb-nodejs-express/issues"
+  },
+  "homepage": "https://github.com/Hoangdao192/saleweb-nodejs-express#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "express-handlebars": "^6.0.6"
+  },
+  "devDependencies": {
+    "morgan": "^1.10.0",
+    "node-sass": "^7.0.1",
+    "nodemon": "^2.0.18"
+  }
+}
