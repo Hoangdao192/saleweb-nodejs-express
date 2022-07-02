@@ -1,0 +1,34 @@
+<div class="product-item">
+    <img {{!--onclick="showProductDetail(<?php echo $product->id?>)"--}} src="img/database/{{product.productImagePath}}">
+    <div id="product-color{{product.productId}}" class="product-color">
+        {{#each product.productColor}}
+            <div class="product-color-item">
+                <input value="{{this}}" type="radio" 
+                    class="radio" name="color{{../product.productId}}" 
+                    id="color{{../product.productId}}-{{@index}}"
+                {{#if @index}}
+                {{else}}
+                    checked
+                {{/if}}
+                >
+                <label style="background-color: {{this}}" for="color{{../product.productId}}-{{@index}}" class="radio-label">
+                    <i class="fa-xs fa-solid fa-check"></i>
+                </label>
+            </div>
+        {{/each}}
+    </div>
+    <p class="product-name">{{product.productName}}</p>
+    <p class="product-price"><span class="span-price">{{product.productPrice}}</span><span>đ</span></p>
+    <input style="display: none;" type="text" name="insert" value="insert" />
+    <input style="display: none;" class="product-id-input" name="productId" value="<?php echo $product->id?>" />
+    <button class="add-to-cart">
+        <i class="fa-xl fa-thin fa-plus"></i>
+        <div class="product-size-sub-menu">
+            <p onClick="addToCart(<?php echo $product->id?>,'S','<?php echo $radioGroupId ?>', 1)">S</p>
+            <p onClick="addToCart(<?php echo $product->id?>,'M','<?php echo $radioGroupId ?>', 1)">M</p>
+            <p onClick="addToCart(<?php echo $product->id?>,'L','<?php echo $radioGroupId ?>', 1)">L</p>
+            <p onClick="addToCart(<?php echo $product->id?>,'XL','<?php echo $radioGroupId ?>', 1)">XL</p>
+            <p onClick="addToCart(<?php echo $product->id?>,'XXL','<?php echo $radioGroupId ?>', 1)">XXL</p>
+        </div>
+    </button>
+</div>

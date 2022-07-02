@@ -1,9 +1,3 @@
-{{!-- <?php
-use Core\HTML;
-use App\View;
-
-$products = $data["products"];
-?> --}}
 <link rel="stylesheet" href="css/home.css">
 <link rel="stylesheet" href="css/product.css">
 
@@ -32,7 +26,7 @@ $products = $data["products"];
     </div>
 </section>
 
-<!-------------------------Banner----------------------------------------------------------------------->
+{{!-------------------------Banner-----------------------------------------------------------------------}}
 <section class="banner">
     <div class="banner-item">
         <div class="banner-item__first">
@@ -69,7 +63,7 @@ $products = $data["products"];
     </div>
 </section>
 
-<!-------------------------Product----------------------------------------------------------------------->
+{{!-------------------------Product-----------------------------------------------------------------------}}
 <section class="product">
     <div class="option-product">
         <li id="best-sellers">Bán chạy nhất</li>
@@ -78,31 +72,19 @@ $products = $data["products"];
     </div>
     <div class="product-content">
         <div id="product-content-best-seller">
-            {{!-- <?php
-            $j = 0;
-            for ($i = 0; $i < sizeof($products); ++$i) {
-                if ($i > 7) break;
-                View::render('Product.product_thumbnail', ["product" => $products[$i]]);
-            }
-            ?>
+            {{#each bestSeller}}
+                {{>product_thumbnail product=this}}
+            {{/each}}
         </div>
         <div id="product-content-new-product">
-            <?php
-            $j = 0;
-            for ($i = sizeof($products) - 1; $i >= 0; $i = $i - 1) {
-                if ($i <= sizeof($products) - 9) break;
-                View::render('Product.product_thumbnail', ["product" => $products[$i]]);
-            }
-            ?>
+            {{#each newProducts}}
+                {{>product_thumbnail product=this}}
+            {{/each}}
         </div>
         <div id="product-content-hot-sales">
-            <?php
-            $j = 0;
-            for ($i = 0; $i < sizeof($products); ++$i) {
-                if ($i > 7) break;
-                View::render('Product.product_thumbnail', ["product" => $products[$i]]);
-            }
-            ?> --}}
+            {{#each hotSale}}
+                {{>product_thumbnail product=this}}
+            {{/each}}
         </div>
     </div>
 </section>
@@ -186,4 +168,4 @@ $products = $data["products"];
     </div>
 </section>
 
-<script src="<?php echo HTML::script("index.js")?>"></script>
+<script src="javascript/home.js"></script>

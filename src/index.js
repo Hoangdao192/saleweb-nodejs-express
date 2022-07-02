@@ -3,6 +3,8 @@ const express = require('express');
 const morgan = require('morgan');
 //  Template engine
 const handlebars = require('express-handlebars');
+//  Route
+const route = require('./routes/index.route');
 
 const port = 3000;
 const app = express();
@@ -22,8 +24,7 @@ app.set('views', './src/resources/views');
 //  Set static file directory
 app.use(express.static('./src/public'));
 
-app.get('/', (req, res) => {
-    res.render('home');
-});
+//  Routing
+route(app);
 
 app.listen(port, () => {});
